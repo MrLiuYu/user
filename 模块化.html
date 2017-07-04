@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+	
+</body>
+<script src="jQuery.js"></script>
+<script>
+	//污染全局变量
+	function fun1(){
+		var num = 10 ;
+		return function(){
+			console.log(num);
+		}
+
+	}
+	var aa = fun1();
+	console.log(aa);
+
+	function fun2(){
+		console.log(777)
+	}
+	
+	fun1();
+
+	/*var fun1 = (function(){
+		var num = 10;
+		var str = "imen";
+		function f1(){
+			console.log("f1")
+		}
+		function f2(){
+			console.log("f2")
+		}
+
+		return{
+			f1:f1,
+			f2:f2,
+			num:num
+		}
+	})()
+	fun1.f1();
+	console.log(fun1.num);*/
+
+	//宽放大模式
+	var modile = {
+		str:"liu"
+	}
+
+	var mymodule = (function(mod){
+		function getModule(){
+			if(mod.str){
+				console.log(mod.str);
+			}else{
+				cosole.log("你还没有这个属性");
+			}
+		}
+
+		return{
+			getModule:getModule
+		}
+	})(modile || {})
+
+	mymodule.getModule();
+
+</script>
+</html>
